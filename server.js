@@ -16,7 +16,7 @@ const SESSION_SECRET = process.env.SESSION_SECRET || 'dev_secret_change_me';
 // ✅ Allow both localhost and deployed frontend
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://your-frontend.onrender.com'  // <-- replace with your actual frontend Render URL
+  'https://klickk-auth-frontend.netlify.app'  // <-- replace with your actual frontend Render URL
 ];
 
 app.use(cors({
