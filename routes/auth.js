@@ -9,7 +9,6 @@ const router = express.Router();
 const normalizeEmail = (email) => String(email || '').trim().toLowerCase();
 
 
-// POST /api/auth/register
 router.post('/register', (req, res) => {
 const { email, password } = req.body;
 const e = normalizeEmail(email);
@@ -38,7 +37,7 @@ return res.status(500).json({ error: 'Server error' });
 });
 
 
-// POST /api/auth/login
+
 router.post('/login', (req, res) => {
 const { email, password } = req.body;
 const e = normalizeEmail(email);
@@ -64,7 +63,7 @@ return res.status(500).json({ error: 'Server error' });
 });
 
 
-// POST /api/auth/logout
+
 router.post('/logout', (req, res) => {
 req.session.destroy((err) => {
 if (err) return res.status(500).json({ error: 'Failed to logout' });
@@ -74,21 +73,21 @@ return res.json({ message: 'Logged out' });
 });
 
 
-// GET /api/auth/me
+
 router.get('/me', (req, res) => {
 if (req.session.user) return res.json({ user: req.session.user });
 return res.status(401).json({ user: null });
 });
 
 
-// Simple auth middleware
+
 function ensureAuth(req, res, next) {
 if (req.session.user) return next();
 return res.status(401).json({ error: 'Unauthorized' });
 }
 
 
-// GET /api/auth/protected
+
 router.get('/protected', ensureAuth, (req, res) => {
 res.json({ message: 'You are authenticated', user: req.session.user });
 });

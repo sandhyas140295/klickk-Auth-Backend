@@ -6,7 +6,7 @@ const dbPath = path.resolve(__dirname, 'users.db');
 const db = new sqlite3.Database(dbPath);
 
 
-// Initialize tables
+
 db.serialize(() => {
 db.run('PRAGMA foreign_keys = ON;');
 db.run(`CREATE TABLE IF NOT EXISTS users (
