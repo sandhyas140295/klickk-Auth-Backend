@@ -18,12 +18,12 @@ const FRONTEND_ORIGIN = process.env.FRONTEND_ORIGIN || 'http://localhost:3000';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'dev_secret_change_me';
 
 
-app.use(cors({
-origin: FRONTEND_ORIGIN,
-credentials: true,
-}));
+// app.use(cors({
+// origin: FRONTEND_ORIGIN,
+// credentials: true,
+// }));
 
-
+app.use(cors())
 app.use(express.json());
 app.use(cookieParser());
 
